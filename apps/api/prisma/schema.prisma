@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  owner
+  admin
+  viewer
+}
+
+enum NodeType {
+  local
+  remote
+}
+
+enum NodeStatus {
+  healthy
+  degraded
+  offline
+}
+
+enum ServerKind {
+  vanilla
+  paper
+}
+
+enum ServerStatus {
+  stopped
+  starting
+  running
+  stopping
+  error
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         UserRole
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  audits       Audit[]
+
+  @@map("users")
+}
+
+model Node {
+  id        String      @id
+  name      String
+  type      NodeType
+  status    NodeStatus
+  host      String?
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+  servers   Server[]
+
+  @@map("nodes")
+}
+
+model Server {
+  id           String       @id @default(uuid())
+  nodeId       String       @map("node_id")
+  name         String
+  kind         ServerKind
+  mcVersion    String       @map("mc_version")
+  memoryMinMb  Int          @map("memory_min_mb")
+  memoryMaxMb  Int          @map("memory_max_mb")
+  port         Int
+  eulaAccepted Boolean      @default(false) @map("eula_accepted")
+  status       ServerStatus @default(stopped)
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+  node         Node         @relation(fields: [nodeId], references: [id])
+  audits       Audit[]
+
+  @@unique([nodeId, name])
+  @@unique([nodeId, port])
+  @@map("servers")
+}
+
+model Audit {
+  id        String   @id @default(uuid())
+  userId    String?  @map("user_id")
+  serverId  String?  @map("server_id")
+  action    String
+  target    String
+  metadata  Json?    @map("metadata_json")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User?    @relation(fields: [userId], references: [id])
+  server    Server?  @relation(fields: [serverId], references: [id])
+
+  @@map("audits")
+}

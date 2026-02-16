@@ -3,7 +3,7 @@
 ## Documentos creados
 1. `product/vision-and-scope.md` — visión, objetivos y alcance.
 2. `prd/prd-mvp.md` — PRD del MVP.
-3. `architecture/architecture-a-now-b-ready.md` — diseño A ahora, B preparado.
+3. `architecture/architecture-a-now-b-ready.md` — diseño A ahora, B preparado + stack técnico aprobado.
 4. `backlog/epics-and-stories.md` — backlog técnico inicial.
 5. `data/data-model-v0.md` — esquema de datos v0.
 6. `repo/folder-architecture.md` — arquitectura de carpetas propuesta.

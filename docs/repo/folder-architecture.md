@@ -37,6 +37,6 @@ minepanel/
 3. Todo caso de uso que opere servidores debe pasar por contrato `NodeProvider`.
 
 ## Decisiones pendientes (para sesión de implementación)
-1. Stack exacto frontend/backend.
-2. Motor de DB inicial (SQLite vs Postgres).
-3. Sistema de colas para fase B.
+1. Framework backend final: Fastify puro o NestJS sobre Fastify.
+2. Política de uso Redis (desde MVP o al pasar a mayor concurrencia).
+3. Sistema de cola para fase B (NATS / Redis Streams / RabbitMQ).

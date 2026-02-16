@@ -1,7 +1,7 @@
 # Roadmap por fases
 
 ## Fase 0 — Diseño y preparación (1-2 semanas)
-- Cerrar decisiones de stack.
+- Bootstrap de stack aprobado (Next.js + backend TypeScript + Prisma).
 - Definir contratos de dominio (`NodeProvider`, `Telemetry`).
 - Montar estructura base del repo.
 

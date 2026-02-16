@@ -59,9 +59,13 @@ En MVP, `LocalNodeProvider` implementa estos contratos en la misma máquina.
 5. Secretos fuera de logs.
 
 ## 7. Decisiones técnicas iniciales
-1. Runtime por procesos Java (no exigir Docker al usuario final).
-2. Empaquetado recomendado: Docker Compose para panel.
-3. Persistencia simple primero, migrable a Postgres.
+1. **Frontend panel**: Next.js (TypeScript, App Router).
+2. **Backend/API**: TypeScript con Fastify (o NestJS sobre Fastify).
+3. **Persistencia**: Prisma + PostgreSQL en producción; SQLite para desarrollo local.
+4. **Realtime**: WebSocket para consola y estado en vivo.
+5. **Jobs**: scheduler en backend; Redis opcional cuando se requiera desacoplar colas.
+6. **Runtime MC**: procesos Java en host para MVP (sin obligar Docker para cada servidor MC).
+7. **Empaquetado panel**: Docker Compose (web/api/db, redis opcional).
 
 ## 8. Criterio de evolución A -> B
 Migrar cuando haya necesidad de operar >1 host estable o límites de capacidad en una sola máquina.

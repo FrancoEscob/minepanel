@@ -3,6 +3,14 @@
 ## 1. Resumen
 MinePanel MVP será un panel web local para crear y gestionar servidores Minecraft **Vanilla** y **Paper** en un único host.
 
+## 1.1 Stack aprobado
+1. **UI**: Next.js + TypeScript.
+2. **API/servicios**: TypeScript (Fastify o NestJS sobre Fastify).
+3. **DB**: PostgreSQL (producción) con Prisma.
+4. **Entorno dev**: SQLite opcional para arranque rápido.
+5. **Contenedores**: Docker Compose para el panel.
+6. **Ejecución servidores MC**: procesos Java en host durante MVP.
+
 ## 2. Alcance MVP
 
 ### Incluido

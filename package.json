@@ -1,0 +1,15 @@
+{
+  "name": "minepanel",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @minepanel/api --filter @minepanel/web dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "db:push": "pnpm --filter @minepanel/api prisma:push",
+    "db:seed": "pnpm --filter @minepanel/api seed:owner"
+  }
+}

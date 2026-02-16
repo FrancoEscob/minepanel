@@ -1,0 +1,9 @@
+node_modules/
+.pnpm-store/
+.next/
+dist/
+coverage/
+.env
+.env.local
+apps/api/prisma/dev.db
+apps/api/prisma/dev.db-journal
